@@ -30,9 +30,19 @@ dependencies {
 
     implementation project(':db')
 
+    // jpa
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
 }
 
 test {
     useJUnitPlatform()
+}
+
+bootJar {
+    enabled = true
+}
+
+jar{
+    enabled = false
 }

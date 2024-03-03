@@ -1,0 +1,19 @@
+version: "3"
+services:
+  db:
+    image: mysql:8.0.36
+    restart: always
+    command:
+      - --lower_case_table_names=1
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+
+    container_name: personal-mysql
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_DATABASE=delivery
+      - MYSQL_ROOT_PASSWORD=1217
+      - TZ=Asia/Seoul
+    volumes:
+      - C:\personaltemp\MYSQL:/var/lib/mysql

@@ -41,8 +41,8 @@ public class LoggerFilter implements Filter {
         });
 
         var requestBody = new String(req.getContentAsByteArray());
-        var uri = req.getRequestURI();
-        var method = req.getMethod();
+        var uri = req.getRequestURI();  //url 정보 추가
+        var method = req.getMethod();   //어떤 주소로 요청했는지 메소드 정보 추가
 
         // 들어올 때 로그
         log.info(">>>>> uri : {} , method : {} , header : {} , body : {}", uri, method, headerValues, requestBody);

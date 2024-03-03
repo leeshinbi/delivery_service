@@ -27,4 +27,9 @@ public class AccountApiController {
                 .registeredAt(LocalDateTime.now())
                 .build();
     }
+    @GetMapping("")
+    public void save(){
+        var account = AccountEntity.builder().build();
+        accountRepository.save(account);
+    }
 }

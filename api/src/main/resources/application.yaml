@@ -14,3 +14,11 @@ spring:
 
 server:
   port: 8081
+
+token:
+  secret:
+    key: SpringBootJWTHelperTokenSecretKeyValue123!@#
+  access-token:
+    plus-hour: 1
+  refresh-token:
+    plus-hour: 12

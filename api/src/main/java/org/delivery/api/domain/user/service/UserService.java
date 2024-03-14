@@ -55,4 +55,21 @@ public class UserService {
         ).orElseThrow(()-> new ApiException(UserErrorCode.USER_NOT_FOUND));
     }
 
+    /**
+     * 위 아래 메소드 이름은 똑같지만 매개 변수가 다른 '오버로딩'이 적용됨
+     */
+
+    /**
+     * userId와 status 넘겨서 파라미터 검증하고
+     * 없으면 UserErrorCode 예외가 터진다.
+     */
+    public UserEntity getUserWithThrow(
+        Long userId
+    ){
+        return userRepository.findFirstByIdAndStatusOrderByIdDesc(
+            userId,
+            UserStatus.REGISTERED
+        ).orElseThrow(()-> new ApiException(UserErrorCode.USER_NOT_FOUND));
+    }
+
 }

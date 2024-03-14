@@ -3,6 +3,7 @@ package org.delivery.api.domain.user.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.delivery.api.common.api.Api;
+import org.delivery.api.domain.token.controller.model.TokenResponse;
 import org.delivery.api.domain.user.business.UserBusiness;
 import org.delivery.api.domain.user.controller.model.UserLoginRequest;
 import org.delivery.api.domain.user.controller.model.UserRegisterRequest;
@@ -32,7 +33,7 @@ public class UserOpenApiController { //공개된 API (WebConfig에 기입되어 
 
     // 로그인
     @PostMapping("/login")
-    public Api<UserResponse> login(
+    public Api<TokenResponse> login(
         @Valid
         @RequestBody Api<UserLoginRequest> request
     ){

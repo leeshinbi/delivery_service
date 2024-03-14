@@ -17,7 +17,9 @@ import org.delivery.api.domain.token.model.TokenDto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-
+/**
+ * JWT를 통해 토큰을 생성해주는 Helper (구현부)
+ */
 @Component
 public class JwtTokenHelper implements TokenHelperIfs {
 

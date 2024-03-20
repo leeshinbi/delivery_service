@@ -6,7 +6,7 @@ import org.delivery.db.store.enums.StoreCategory;
 import org.delivery.db.store.enums.StoreStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface StoreRepositroy extends JpaRepository<StoreEntity, Long> {
+public interface StoreRepository extends JpaRepository<StoreEntity, Long> {
 
 	//유효한 스토어 (id & status)
 	//SELECT* FROM store WHERE id = ? AND status = ? ORDER BY id DESC LIMIT 1

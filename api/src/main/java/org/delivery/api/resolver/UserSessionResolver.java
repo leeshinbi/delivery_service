@@ -2,6 +2,7 @@ package org.delivery.api.resolver;
 
 import lombok.RequiredArgsConstructor;
 import org.delivery.api.common.annotation.UserSession;
+import org.delivery.api.domain.user.business.UserBusiness;
 import org.delivery.api.domain.user.model.User;
 import org.delivery.api.domain.user.service.UserService;
 import org.springframework.core.MethodParameter;
@@ -17,32 +18,32 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 @RequiredArgsConstructor
 public class UserSessionResolver implements HandlerMethodArgumentResolver {
 
-	private UserService userService;
+	private final UserService userService;
 
 	@Override
 	public boolean supportsParameter(MethodParameter parameter) {
-		// 지원하는 파라미터 체크 & 어노테이션 체크
+		// 지원하는 파라미터 체크 , 어노테이션 체크
 
-		// 1. 어노테이션이 있는지 체크
+		//1. 어노테이션이 있는지 체크
 		var annotation = parameter.hasParameterAnnotation(UserSession.class);
-		// 2. 파라미터의 타입 체크
+
+		//2. 파라미터의 타입 체크
 		var parameterType = parameter.getParameterType().equals(User.class);
-		// 어노테이션과 파라미터 타입이 둘 다 true 일때만!
+
 		return (annotation && parameterType);
 	}
 
 	@Override
-	public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
-		NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
+	public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
 		// support parameter 에서 true 반환시 여기 실행
 
-		//request context holder에서 찾아오기
+		// request context holder에서 찾아오기
 		var requestContext = RequestContextHolder.getRequestAttributes();
 		var userId = requestContext.getAttribute("userId", RequestAttributes.SCOPE_REQUEST);
 
 		var userEntity = userService.getUserWithThrow(Long.parseLong(userId.toString()));
 
-		//사용자 정보 세팅
+		// 사용자 정보 셋팅
 		return User.builder()
 			.id(userEntity.getId())
 			.name(userEntity.getName())

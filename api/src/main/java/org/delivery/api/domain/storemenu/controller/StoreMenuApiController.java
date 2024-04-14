@@ -17,11 +17,10 @@ public class StoreMenuApiController {
 
 	private final StoreMenuBusiness storeMenuBusiness;
 
-
 	// 특정 가게를 누르면 해당 가게의 메뉴 정보가 나오는데 그 메뉴 정보를 내려준다.
 	@GetMapping("/search")
 	public Api<List<StoreMenuResponse>> search(
-		@RequestParam Long storeId
+		@RequestParam(value = "storeId") Long storeId
 	){
 		var response = storeMenuBusiness.search(storeId);
 		return Api.OK(response);

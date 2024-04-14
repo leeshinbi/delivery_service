@@ -1,4 +1,4 @@
-package org.delivery.api.domain.store.contoller.model;
+package org.delivery.api.domain.store.controller.model;
 
 
 import jakarta.validation.constraints.NotBlank;

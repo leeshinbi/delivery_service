@@ -1,15 +1,12 @@
 package org.delivery.api.domain.user.model;
 
-
-import jakarta.persistence.Column;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.delivery.db.user.enums.UserStatus;
+
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -34,5 +31,4 @@ public class User {
 	private LocalDateTime unregisteredAt;
 
 	private LocalDateTime lastLoginAt;
-
 }

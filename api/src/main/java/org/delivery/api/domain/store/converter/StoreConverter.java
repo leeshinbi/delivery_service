@@ -1,17 +1,18 @@
 package org.delivery.api.domain.store.converter;
 
-import java.util.Optional;
 import org.delivery.api.common.annotation.Converter;
 import org.delivery.api.common.error.ErrorCode;
 import org.delivery.api.common.exception.ApiException;
-import org.delivery.api.domain.store.contoller.model.StoreRegisterRequest;
-import org.delivery.api.domain.store.contoller.model.StoreResponse;
+import org.delivery.api.domain.store.controller.model.StoreRegisterRequest;
+import org.delivery.api.domain.store.controller.model.StoreResponse;
 import org.delivery.db.store.StoreEntity;
 
-@Converter
-public class StoreConverter  {
+import java.util.Optional;
 
-	public StoreEntity toEntity( //상점 등록 시 데이터를 엔티티로 변환
+@Converter
+public class StoreConverter {
+
+	public StoreEntity toEntity(
 		StoreRegisterRequest request
 	){
 		return Optional.ofNullable(request)

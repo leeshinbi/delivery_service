@@ -1,7 +1,5 @@
-package org.delivery.api.domain.store.contoller.model;
+package org.delivery.api.domain.store.controller.model;
 
-
-import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,13 +7,15 @@ import lombok.NoArgsConstructor;
 import org.delivery.db.store.enums.StoreCategory;
 import org.delivery.db.store.enums.StoreStatus;
 
+import java.math.BigDecimal;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class StoreResponse { //상점이 등록 됐을 때의 데이터
+public class StoreResponse {
 
-	private Long id; //등록되면 id가 발행됐을 것이다.
+	private Long id;
 
 	private String name;
 

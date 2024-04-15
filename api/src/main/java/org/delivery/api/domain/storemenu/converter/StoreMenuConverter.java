@@ -1,7 +1,8 @@
 package org.delivery.api.domain.storemenu.converter;
 
-
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import org.delivery.api.common.annotation.Converter;
 import org.delivery.api.common.error.ErrorCode;
 import org.delivery.api.common.exception.ApiException;
@@ -12,45 +13,47 @@ import org.delivery.db.storemenu.StoreMenuEntity;
 @Converter
 public class StoreMenuConverter {
 
-
-	// 메뉴 등록하려는 데이터를 엔터티로 변환
-	public StoreMenuEntity toEntity(StoreMenuRegisterRequest request){
-
+	public StoreMenuEntity toEntity(
+		StoreMenuRegisterRequest request
+	) {
 		return Optional.ofNullable(request)
-			.map(it ->{
-
-				return StoreMenuEntity.builder()
-					.storeId(request.getStoreId())
-					.name(request.getName())
-					.amount(request.getAmount())
-					.thumbnailUrl(request.getThumbnailUrl())
-					.build()
-					;
-
-			})
-			.orElseThrow(()-> new ApiException(ErrorCode.NULL_POINT));
+			.map(it -> {
+					return StoreMenuEntity.builder()
+						.storeId(request.getStoreId())
+						.name(request.getName())
+						.amount(request.getAmount())
+						.thumbnailUrl(request.getThumbnailUrl())
+						.build();
+				}
+			)
+			.orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
 	}
 
-	// 엔터티를 StoreResponse 객체로 변환
 	public StoreMenuResponse toResponse(
 		StoreMenuEntity storeMenuEntity
-	){
+	) {
 		return Optional.ofNullable(storeMenuEntity)
-			.map(it ->{
+			.map(it -> {
 				return StoreMenuResponse.builder()
 					.id(storeMenuEntity.getId())
-					.name(storeMenuEntity.getName())
 					.storeId(storeMenuEntity.getStoreId())
+					.name(storeMenuEntity.getName())
 					.amount(storeMenuEntity.getAmount())
 					.status(storeMenuEntity.getStatus())
 					.thumbnailUrl(storeMenuEntity.getThumbnailUrl())
 					.likeCount(storeMenuEntity.getLikeCount())
 					.sequence(storeMenuEntity.getSequence())
-					.build()
-					;
+					.build();
 			})
-			.orElseThrow(()-> new ApiException(ErrorCode.NULL_POINT));
+			.orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
 	}
 
+	public List<StoreMenuResponse> toResponse( //메서드 재사용
+		List<StoreMenuEntity> list
+	) {
+		return list.stream()
+			.map(it -> toResponse(it))
+			.collect(Collectors.toList());
+	}
 
 }

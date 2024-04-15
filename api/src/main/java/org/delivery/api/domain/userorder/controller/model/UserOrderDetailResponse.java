@@ -15,7 +15,7 @@ import java.util.List;
 @Builder
 public class UserOrderDetailResponse {
 
-	private UserOrderResponse userOrderResponse;
-	private StoreResponse storeResponse;
-	private List<StoreMenuResponse> storeMenuResponseList;
+	private UserOrderResponse userOrderResponse; // 사용자가 주문한 건이 무엇인지
+	private StoreResponse storeResponse; // 그 가게가 어디인지
+	private List<StoreMenuResponse> storeMenuResponseList; // 어떠한 메뉴를 주문했는지
 }

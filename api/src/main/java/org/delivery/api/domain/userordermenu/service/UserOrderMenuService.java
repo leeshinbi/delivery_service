@@ -26,8 +26,8 @@ public class UserOrderMenuService {
 	){
 		return Optional.ofNullable(userOrderMenuEntity)
 			.map(it ->{
-				it.setStatus(UserOrderMenuStatus.REGISTERED);
-				return userOrderMenuRepository.save(it);
+				it.setStatus(UserOrderMenuStatus.REGISTERED); //상태를 '등록'으로 바꾸고
+				return userOrderMenuRepository.save(it); //저장
 			})
 			.orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
 	}

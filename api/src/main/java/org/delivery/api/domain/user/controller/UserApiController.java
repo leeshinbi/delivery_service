@@ -23,7 +23,7 @@ public class UserApiController {
 
     @GetMapping("/me")
     public Api<UserResponse> me(
-        @UserSession User user
+        @UserSession User user //resolve argument
     ){
         var response = userBusiness.me(user);
         return Api.OK(response);

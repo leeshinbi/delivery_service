@@ -1,4 +1,7 @@
 spring:
+  application:
+    name: store-admin
+
   jpa:
     show-sql: true
     properties:
@@ -14,5 +17,5 @@ spring:
 
 server:
   port: 8082
-  name: store-admin
+
 

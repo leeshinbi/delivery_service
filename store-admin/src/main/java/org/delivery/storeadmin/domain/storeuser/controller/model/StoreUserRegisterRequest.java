@@ -1,4 +1,4 @@
-package org.delivery.storeadmin.domain.user.controller.model;
+package org.delivery.storeadmin.domain.storeuser.controller.model;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -6,11 +6,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.delivery.db.storeuser.enums.StoreUserRole;
 
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class StoreUserRegisterRequest { //상점 가입 신청 시 필요 정보
+public class StoreUserRegisterRequest {
 
 	@NotBlank
 	private String storeName;
